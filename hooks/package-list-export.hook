@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+
+[Action]
+Description = Export installed packages to *.txt file
+When = PostTransaction
+Exec = /bin/sh -c '/usr/bin/pacman -Qqe > /home/%USER%/%BACKUP_PATH%/pkglist-all.txt && /usr/bin/pacman -Qqem > /home/%USER%/%BACKUP_PATH%/pkglist-explicit.txt'
+
